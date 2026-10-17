@@ -1,9 +1,10 @@
-# Site editor. Sign in with GitHub at sunandsage.space/admin
+# Site editor. Sign in with GitHub at https://sunandsage.space/admin
+# Login handled by /functions/auth.js and /functions/callback.js (Cloudflare Pages Functions).
 backend:
   name: github
   repo: Rayevoltion/sunandsage
   branch: main
-  base_url: https://api.netlify.com
+  base_url: https://sunandsage.space
   auth_endpoint: auth
 
 site_url: https://sunandsage.space
