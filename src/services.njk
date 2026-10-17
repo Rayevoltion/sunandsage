@@ -1,0 +1,33 @@
+---
+layout: base.njk
+title: Services
+permalink: /services/
+description: Decluttering, organizing and botanical cleaning services in Boulder, Colorado. The Edit, The Arrange, The Reset and The Seasonal.
+---
+<section class="wrap page-head">
+  <p class="eyebrow">Services</p>
+  <h1 class="display-sm">Order, at the pace you need</h1>
+  <p class="lede">{{ services.intro }}</p>
+</section>
+
+<section class="wrap section-tight">
+  <div class="service-list">
+    {% for s in services.items %}
+    <article class="service" id="{{ s.name | slugify }}">
+      <div class="service-head">
+        <h2 class="h2">{{ s.name }}</h2>
+        <p class="price">{% if s.price %}{{ s.price }}{% else %}Pricing on consultation{% endif %}</p>
+      </div>
+      <div class="service-body">
+        <p class="lead-sm">{{ s.summary }}</p>
+        <p class="muted">{{ s.details }}</p>
+        {% if s.includes | length %}
+        <ul class="check-list">{% for i in s.includes %}<li>{{ i }}</li>{% endfor %}</ul>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% include "consult.njk" %}

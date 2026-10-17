@@ -1,0 +1,82 @@
+---
+layout: base.njk
+---
+<section class="wrap hero">
+  <div class="hero-text">
+    <p class="eyebrow">{{ home.eyebrow }}</p>
+    <h1 class="display">{{ home.headline }}<br><em>{{ home.headlineAccent }}</em></h1>
+    <p class="lede">{{ home.intro }}</p>
+    <div class="btn-row">
+      {% include "cta.njk" %}
+      <a class="btn btn-line" href="/services/">View services</a>
+    </div>
+  </div>
+  <div class="hero-media">
+    {% if home.heroImage %}<img class="arch" src="{{ home.heroImage }}" alt="An organized, sunlit home space">{% else %}
+    <div class="arch arch-art" aria-hidden="true">
+      <svg viewBox="0 0 400 500"><circle cx="200" cy="170" r="88" fill="#E5C07D" opacity=".45"/><circle cx="200" cy="170" r="120" fill="none" stroke="#E5C07D" opacity=".6"/><path d="M200 470C200 360 140 300 80 290c40 60 70 120 120 180Z" fill="#7D8C6E" opacity=".6"/><path d="M200 470c0-110 60-170 120-180-40 60-70 120-120 180Z" fill="#7D8C6E" opacity=".45"/><path d="M200 470V300" stroke="#3F4F36" stroke-width="1.5"/></svg>
+    </div>{% endif %}
+  </div>
+</section>
+
+<section class="band band-dark">
+  <div class="wrap narrow center">
+    <p class="statement">{{ home.statement }}</p>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <div><p class="eyebrow">Services</p><h2 class="h2">Four ways to begin</h2></div>
+    <p class="muted measure">{{ services.intro }}</p>
+  </div>
+  <div class="cards">
+    {% for s in services.items %}
+    <a class="card" href="/services/#{{ s.name | slugify }}">
+      <h3 class="h3">{{ s.name }}</h3>
+      <p>{{ s.summary }}</p>
+      <p class="price">{% if s.price %}{{ s.price }}{% else %}Pricing on consultation{% endif %}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band band-sage">
+  <div class="wrap split">
+    <div class="split-media pair">
+      {% set src = botanicals.products[0].image %}{% set alt = "Sun & Sage Botanicals bottles" %}{% set cls = "tall" %}{% include "photo.njk" %}
+      {% set src = botanicals.image %}{% set alt = "Fresh herbs at a Front Range farm" %}{% set cls = "tall offset" %}{% include "photo.njk" %}
+    </div>
+    <div class="split-text">
+      <p class="eyebrow">Sun &amp; Sage Botanicals</p>
+      <h2 class="h2">{{ botanicals.headline }}</h2>
+      <p class="muted">{{ botanicals.intro }}</p>
+      <ul class="rule-list">
+        {% for p in botanicals.products %}<li><span>{{ p.name }}</span><span class="muted">{{ p.use }}</span></li>{% endfor %}
+      </ul>
+      <a class="text-link" href="/botanicals/">About our botanicals →</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section">
+  <p class="eyebrow center">Process</p>
+  <h2 class="h2 center">Three steps to order</h2>
+  <ol class="steps">
+    <li><span class="step-n">1</span><h3 class="h3">Walkthrough</h3><p class="muted">In-home visit. Goals, habits, problem areas. Scope and quote follow.</p></li>
+    <li><span class="step-n">2</span><h3 class="h3">Edit &amp; arrange</h3><p class="muted">Declutter alongside you. Build systems that hold. Labels, containers, flow.</p></li>
+    <li><span class="step-n">3</span><h3 class="h3">Botanical finish</h3><p class="muted">Surfaces cleaned with farm-grown herbal products. Space left calm and light.</p></li>
+  </ol>
+</section>
+
+{% if testimonials.items | length %}
+<section class="band band-paper">
+  <div class="wrap narrow center">
+    {% set t = testimonials.items[0] %}
+    <blockquote class="quote">{{ t.quote }}</blockquote>
+    <p class="muted small">{{ t.name }}{% if t.place %}, {{ t.place }}{% endif %}</p>
+  </div>
+</section>
+{% endif %}
+
+{% include "consult.njk" %}

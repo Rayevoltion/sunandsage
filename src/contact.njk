@@ -1,0 +1,33 @@
+---
+layout: base.njk
+title: Contact
+permalink: /contact/
+description: Request an in-home consultation with Sun & Sage Spaces in Boulder, Colorado.
+---
+<section class="wrap page-head">
+  <p class="eyebrow">Contact</p>
+  <h1 class="display-sm">Begin with a walkthrough</h1>
+  <p class="lede">Tell us about your space. We reply within {{ site.responseTime }}.</p>
+</section>
+
+<section class="wrap split section-tight align-start">
+  <div class="split-media">
+    {% if site.typeformId %}
+    <div class="tf-frame" data-tf-live="{{ site.typeformId }}"></div>
+    {% else %}
+    <div class="tf-placeholder">
+      <p class="h3">Consultation form</p>
+      <p class="muted">Form launching soon. Reach us directly in the meantime.</p>
+    </div>
+    {% endif %}
+  </div>
+  <div class="split-text">
+    <dl class="contact-list">
+      {% if site.email %}<div><dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>{% endif %}
+      {% if site.phone %}<div><dt>Phone</dt><dd><a href="tel:{{ site.phone | replace(' ','') }}">{{ site.phone }}</a></dd></div>{% endif %}
+      {% if site.instagram %}<div><dt>Instagram</dt><dd><a href="https://instagram.com/{{ site.instagram | replace('@','') }}" rel="noopener">{{ site.instagram }}</a></dd></div>{% endif %}
+      <div><dt>Service area</dt><dd>{{ site.serviceArea }}</dd></div>
+    </dl>
+    {% if site.bookingUrl %}<a class="btn btn-line" href="{{ site.bookingUrl }}" rel="noopener">Schedule online</a>{% endif %}
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: FAQ
+permalink: /faq/
+description: Common questions about Sun & Sage Spaces organizing sessions, donations and botanical products.
+---
+<section class="wrap page-head">
+  <p class="eyebrow">FAQ</p>
+  <h1 class="display-sm">Questions, answered</h1>
+</section>
+
+<section class="wrap narrow section-tight">
+  <div class="faq">
+    {% for f in faq.items %}
+    <details>
+      <summary>{{ f.q }}</summary>
+      <p class="muted">{{ f.a }}</p>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+
+{% include "consult.njk" %}

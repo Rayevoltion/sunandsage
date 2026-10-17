@@ -1,0 +1,33 @@
+{
+  "intro": "Each engagement starts with an in-home walkthrough. Scope, pace and pricing set together.",
+  "items": [
+    {
+      "name": "The Edit",
+      "summary": "Guided decluttering. Keep, release, donate. Room by room, without overwhelm.",
+      "details": "A focused session to reduce what a space holds. Items sorted together into keep, donate, sell and release. Donations dropped off. Space left ready for organizing.",
+      "includes": ["In-home sorting session", "Donation drop-off", "Recommendations for next steps"],
+      "price": ""
+    },
+    {
+      "name": "The Arrange",
+      "summary": "Systems designed for how you live. Closets, pantries, kitchens, studios, garages.",
+      "details": "Storage systems built around daily habits. Zones defined, containers chosen, everything labeled. Built to hold up after we leave.",
+      "includes": ["Space planning", "Container sourcing", "Labeling", "Maintenance guide"],
+      "price": ""
+    },
+    {
+      "name": "The Reset",
+      "summary": "Full edit and arrange, finished with a botanical clean. A space returned whole.",
+      "details": "The complete service. Declutter, organize, then clean every surface with Sun & Sage Botanicals. Finishing bottle left behind.",
+      "includes": ["The Edit", "The Arrange", "Botanical surface clean", "Finishing bottle"],
+      "price": ""
+    },
+    {
+      "name": "The Seasonal",
+      "summary": "Recurring visits each season. Systems maintained, spaces refreshed, order kept.",
+      "details": "Quarterly visits to keep systems working. Seasonal wardrobe swaps, pantry refreshes, light botanical clean.",
+      "includes": ["Four visits per year", "Seasonal swaps", "System tune-ups", "Botanical refresh"],
+      "price": ""
+    }
+  ]
+}

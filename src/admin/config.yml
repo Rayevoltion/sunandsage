@@ -1,0 +1,120 @@
+# Site editor. Sign in with GitHub at sunandsage.space/admin
+backend:
+  name: github
+  repo: OWNER/sunandsage   # replaced at launch with real GitHub repo
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+site_url: https://sunandsage.space
+display_url: https://sunandsage.space
+logo_url: /assets/img/mark-sm.png
+media_folder: src/assets/img/uploads
+public_folder: /assets/img/uploads
+
+collections:
+  - name: settings
+    label: Business info
+    files:
+      - name: site
+        label: Contact & settings
+        file: src/_data/site.json
+        fields:
+          - { name: name, label: Business name, widget: string }
+          - { name: tagline, label: Tagline, widget: string }
+          - { name: url, label: Website address, widget: string }
+          - { name: description, label: Search engine description, widget: text, hint: "Shown in Google results. About 150 characters." }
+          - { name: email, label: Email, widget: string, required: false }
+          - { name: phone, label: Phone, widget: string, required: false }
+          - { name: instagram, label: Instagram handle, widget: string, required: false, hint: "Example: @sunandsagespaces" }
+          - { name: serviceArea, label: Service area, widget: string }
+          - { name: responseTime, label: Reply time, widget: string, hint: "Completes the sentence: We reply within ..." }
+          - { name: typeformId, label: Typeform form ID, widget: string, required: false, hint: "The code at the end of your Typeform link. Leave blank to hide the form." }
+          - { name: bookingUrl, label: Online scheduling link, widget: string, required: false }
+
+  - name: pages
+    label: Page content
+    files:
+      - name: home
+        label: Home page
+        file: src/_data/home.json
+        fields:
+          - { name: eyebrow, label: Small heading above title, widget: string }
+          - { name: headline, label: Headline, widget: string }
+          - { name: headlineAccent, label: Headline second line, widget: string }
+          - { name: intro, label: Intro paragraph, widget: text }
+          - { name: heroImage, label: Hero photo, widget: image, required: false, hint: "Tall photo works best. Leave blank for the illustrated arch." }
+          - { name: statement, label: Green band statement, widget: text }
+      - name: about
+        label: About page
+        file: src/_data/about.json
+        fields:
+          - { name: headline, label: Headline, widget: string }
+          - { name: story, label: Founder story, widget: text, required: false, hint: "Leave a blank line between paragraphs." }
+          - { name: image, label: Photo, widget: image, required: false }
+          - name: values
+            label: Values
+            widget: list
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: text, label: Text, widget: text }
+      - name: faq
+        label: FAQ
+        file: src/_data/faq.json
+        fields:
+          - name: items
+            label: Questions
+            widget: list
+            summary: "{{fields.q}}"
+            fields:
+              - { name: q, label: Question, widget: string }
+              - { name: a, label: Answer, widget: text }
+
+  - name: offerings
+    label: Services & products
+    files:
+      - name: services
+        label: Services
+        file: src/_data/services.json
+        fields:
+          - { name: intro, label: Intro, widget: text }
+          - name: items
+            label: Services
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: summary, label: One-line summary, widget: text }
+              - { name: details, label: Full description, widget: text }
+              - { name: includes, label: What's included, widget: list, field: { name: item, label: Item, widget: string } }
+              - { name: price, label: Price, widget: string, required: false, hint: "Example: From $450. Leave blank to show 'Pricing on consultation'." }
+      - name: botanicals
+        label: Botanicals
+        file: src/_data/botanicals.json
+        fields:
+          - { name: headline, label: Headline, widget: string }
+          - { name: intro, label: Intro, widget: text }
+          - { name: sourcing, label: Sourcing paragraph, widget: text }
+          - { name: image, label: Farm photo, widget: image, required: false }
+          - name: products
+            label: Products
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: use, label: Used for, widget: string }
+              - { name: ingredients, label: Ingredients, widget: string, required: false }
+              - { name: image, label: Photo, widget: image, required: false }
+      - name: testimonials
+        label: Testimonials
+        file: src/_data/testimonials.json
+        fields:
+          - name: items
+            label: Testimonials
+            widget: list
+            summary: "{{fields.name}}"
+            hint: "Real client words only, with their permission. First one shows on the home page."
+            fields:
+              - { name: quote, label: Quote, widget: text }
+              - { name: name, label: Client name, widget: string }
+              - { name: place, label: Neighborhood or town, widget: string, required: false }

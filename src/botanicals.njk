@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: Botanicals
+permalink: /botanicals/
+description: Non-toxic cleaning products made from regeneratively grown Front Range herbs, used in every Sun & Sage Spaces home.
+---
+<section class="wrap page-head">
+  <p class="eyebrow">Sun &amp; Sage Botanicals</p>
+  <h1 class="display-sm">{{ botanicals.headline }}</h1>
+  <p class="lede">{{ botanicals.intro }}</p>
+</section>
+
+<section class="wrap section-tight">
+  <div class="products">
+    {% for p in botanicals.products %}
+    <article class="product">
+      {% set src = p.image %}{% set alt = p.name %}{% set cls = "square" %}{% include "photo.njk" %}
+      <h2 class="h3">{{ p.name }}</h2>
+      <p class="muted">{{ p.use }}</p>
+      {% if p.ingredients %}<p class="small"><strong>Ingredients:</strong> {{ p.ingredients }}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band band-sage">
+  <div class="wrap split">
+    <div class="split-text">
+      <p class="eyebrow">Sourcing</p>
+      <h2 class="h2">From soil to shelf</h2>
+      <p class="muted">{{ botanicals.sourcing }}</p>
+    </div>
+    <div class="split-media">
+      {% set src = botanicals.image %}{% set alt = "Herb rows at a Front Range farm" %}{% set cls = "wide" %}{% include "photo.njk" %}
+    </div>
+  </div>
+</section>
+
+{% include "consult.njk" %}

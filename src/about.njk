@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: About
+permalink: /about/
+description: Sun & Sage Spaces is a Boulder home organizing studio rooted in Front Range regenerative farming.
+---
+<section class="wrap page-head">
+  <p class="eyebrow">About</p>
+  <h1 class="display-sm">{{ about.headline }}</h1>
+</section>
+
+<section class="wrap split section-tight">
+  <div class="split-text prose">
+    {% if about.story %}{{ about.story | paras | safe }}{% else %}<p class="muted">Founder story coming soon.</p>{% endif %}
+    <p class="muted">{{ botanicals.sourcing }}</p>
+  </div>
+  <div class="split-media">
+    {% set src = about.image %}{% set alt = "Sun & Sage Spaces founder" %}{% set cls = "portrait" %}{% include "photo.njk" %}
+  </div>
+</section>
+
+<section class="band band-paper">
+  <div class="wrap">
+    <div class="values">
+      {% for v in about.values %}
+      <div><h2 class="h3">{{ v.title }}</h2><p class="muted">{{ v.text }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "consult.njk" %}

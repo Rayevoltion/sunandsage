@@ -1,0 +1,11 @@
+{
+  "headline": "Grown on local farms. Made to clean.",
+  "intro": "Every product used in your home is crafted from regeneratively grown herbs. Non-toxic. Effective. Safe around children, pets and food.",
+  "sourcing": "Herbs sourced from regenerative farms near Longmont. Grown for soil health first, then harvested, distilled and bottled for the homes we serve.",
+  "image": "",
+  "products": [
+    { "name": "Sage & Thyme Surface", "use": "Counters, tables, sealed wood", "ingredients": "", "image": "" },
+    { "name": "Lavender Linen Mist", "use": "Linens, closets, upholstery", "ingredients": "", "image": "" },
+    { "name": "Mint & Citrus Glass", "use": "Glass, mirrors, chrome", "ingredients": "", "image": "" }
+  ]
+}
