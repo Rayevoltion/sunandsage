@@ -12,7 +12,7 @@ Each save commits to GitHub; Netlify rebuilds the site in about a minute.
 
 ## Launch steps
 1. Create GitHub repo `sunandsage` and push this folder.
-2. In `src/admin/config.yml`, replace `OWNER/sunandsage` with the real repo path.
+2. In `src/admin/config.yml`, repo is set to `Rayevoltion/sunandsage`.
 3. Netlify → Add new site → Import from GitHub → pick repo. Build settings come from `netlify.toml`.
 4. Admin login: create a GitHub OAuth App (GitHub → Settings → Developer settings → OAuth Apps).
    - Homepage URL: `https://sunandsage.space`
