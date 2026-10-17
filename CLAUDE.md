@@ -4,9 +4,9 @@ Luxury home organizing + decluttering, Boulder CO. Botanical cleaning products f
 
 ## Stack
 - Eleventy 3 (Nunjucks) → static `_site`
-- Hosting: Cloudflare Pages (build `npm run build`, output `_site`, Node 22 via `.node-version`)
+- Hosting: Cloudflare Workers with static assets (`wrangler.jsonc`, assets `_site`; build `npm run build`, deploy `npx wrangler deploy`; Node 22 via `.node-version`)
 - Editor: Decap CMS at `/admin`, GitHub backend, repo `Rayevoltion/sunandsage`, branch `main`
-- Editor login: Pages Functions `functions/auth.js` + `functions/callback.js`; env vars `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`
+- Editor login: `worker/index.js` routes `/auth`, `/callback`; Worker secrets `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`
 - OAuth callback: `https://sunandsage.space/callback`; `www` must redirect to apex
 - Forms: Typeform, ID in `src/_data/site.json` → `typeformId` (blank = CTAs link to /contact/)
 
@@ -25,3 +25,4 @@ Luxury home organizing + decluttering, Boulder CO. Botanical cleaning products f
 ## Hosting decision
 - Moved off Netlify: credit pricing (15 credits per production deploy, 300 free/mo)
 - Batch changes into one push per session
+- Cloudflare labels Pages "legacy"; chose Workers static assets before launch

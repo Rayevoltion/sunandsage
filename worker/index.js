@@ -1,4 +1,25 @@
-// Finishes GitHub sign-in and hands the token back to the editor window.
+// Sun & Sage Spaces Worker.
+// Static site files in _site are served automatically.
+// This script only handles the site editor's GitHub sign-in: /auth and /callback.
+// Needs Worker secrets: GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET.
+
+async function startAuth(request, env) {
+  const url = new URL(request.url);
+  const state = crypto.randomUUID();
+  const authorize = new URL("https://github.com/login/oauth/authorize");
+  authorize.searchParams.set("client_id", env.GITHUB_CLIENT_ID);
+  authorize.searchParams.set("redirect_uri", `${url.origin}/callback`);
+  authorize.searchParams.set("scope", url.searchParams.get("scope") || "repo");
+  authorize.searchParams.set("state", state);
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: authorize.toString(),
+      "Set-Cookie": `decap_oauth_state=${state}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=600`
+    }
+  });
+}
+
 function page(status, payload) {
   const message = `authorization:github:${status}:${JSON.stringify(payload)}`;
   return new Response(
@@ -24,7 +45,7 @@ function page(status, payload) {
   );
 }
 
-export async function onRequestGet({ request, env }) {
+async function finishAuth(request, env) {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
@@ -51,3 +72,12 @@ export async function onRequestGet({ request, env }) {
   }
   return page("success", { token: data.access_token, provider: "github" });
 }
+
+export default {
+  async fetch(request, env) {
+    const { pathname } = new URL(request.url);
+    if (pathname === "/auth") return startAuth(request, env);
+    if (pathname === "/callback") return finishAuth(request, env);
+    return env.ASSETS.fetch(request);
+  }
+};
